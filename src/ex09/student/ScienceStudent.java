@@ -3,7 +3,7 @@ package ex09.student;
 public class ScienceStudent implements Student {
 
     @Override
-    public void getHomework() {
+    public void doHomework() {
         System.out.println("과학 숙제를 합니다");
     }
 

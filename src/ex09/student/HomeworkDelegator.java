@@ -3,6 +3,8 @@ package ex09.student;
 import java.util.ArrayList;
 import java.util.List;
 
+// 숙제를 특정 학생에게 위임하는 클래스
+// HomeworkDelegator
 public class HomeworkDelegator {
     private final List<Student> students = new ArrayList<>();
 
@@ -12,24 +14,25 @@ public class HomeworkDelegator {
         students.add(new ScienceStudent());
     }
 
+    // 숙제를 위임
     public void delegateHomework(HomeworkType type) {
         // 1. for 문 사용
         for (Student student : students) {
             if (student.isSameHomework(type)) {
-                student.getHomework();
+                student.doHomework();
             }
         }
 
         // 2. for-each 문 사용
         students.forEach(student -> {
             if (student.isSameHomework(type)) {
-                student.getHomework();
+                student.doHomework();
             }
         });
 
-        // 3. stream 사용 (filter는 조건에 만족하는 것만 추려내기 위해서)
+        // 3. stream 사용 (filter는 조건에 만족하는 것만 추려내기 위해서)z
         students.stream()
                 .filter(student -> student.isSameHomework(type))
-                .forEach(student -> student.getHomework());
+                .forEach(student -> student.doHomework());
     }
 }
